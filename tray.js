@@ -76,4 +76,4 @@ class Tray {
     }
 }
 
-module.exports = Tray;
+module.exports = new Tray();

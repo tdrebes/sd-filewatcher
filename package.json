@@ -20,5 +20,9 @@
       "buildResources": "build",
       "output": "release"
     }
+  },
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "dotenv": "^16.0.3"
   }
 }

@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded', () => {
   const replaceText = (selector, text) => {
     const element = document.getElementById(selector)
-    if (element) element.innerText = text
+    if (element) element.innerHTML = text
   }
 
   let query = new URLSearchParams(global.location.search);
