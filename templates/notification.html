@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Notification</title>
+    <link rel="stylesheet" href="../styles/notification.css">
+  </head>
+  <body>
+    <div class="main_container">
+      <h2 class="notification_title" id="notification_title"></h2>
+      <div class="notification_text" id="notification_text"></div>
+      <div class="notification_actions">
+        <div class="notification_action" id="action_close">
+          <p>
+            <b>Close</b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- You can also require other files to run in this process -->
+    <script src="../renderer.js"></script>
+  </body>
+</html>
