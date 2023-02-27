@@ -53,8 +53,8 @@ class Notifier {
 
     createNativeNotification(title, body) {
         new Notification({
-            title: 'Notification',
-            body: 'This is the content of a notification.',
+            title: title,
+            body: body,
         }).show();
     }
 }
