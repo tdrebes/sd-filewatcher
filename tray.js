@@ -23,7 +23,7 @@ class Tray {
             {
                 enabled: false,
                 type: 'normal',
-                label: 'Notifier',
+                label: 'FileWatcher',
                 sublabel: this.applicationVersion,
             },
             {
@@ -38,6 +38,11 @@ class Tray {
                 type: 'normal',
                 label: 'Create Test-Notification',
                 click: this.onCreateTestNotificationClicked.bind(this)
+            },
+            {
+                type: 'normal',
+                label: 'Approve files',
+                click: this.onApproveFilesClicked.bind(this)
             },
             {
                 type: 'separator'
@@ -73,6 +78,10 @@ class Tray {
     
     onCreateTestNotificationWindowsClicked() {
         this.eventEmitter.emit('create-test-notification-windows');
+    }
+
+    onApproveFilesClicked() {
+        this.eventEmitter.emit('approve-files');
     }
 }
 

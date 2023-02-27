@@ -2,6 +2,7 @@ const { app, ipcMain } = require('electron');
 
 const tray = require('./tray');
 const notifier = require('./notifier');
+const approver = require('./approver');
 const chokidar = require('chokidar');
 
 require('dotenv').config();
@@ -29,6 +30,11 @@ tray.on('create-test-notification-windows', () => {
   console.log('Test Notification (Windows) triggered.');
   notifier.createNativeNotification('Notification', 'This is the content of a notification.');
 });
+
+tray.on('approve-files', () => {
+  console.log('Approve Files triggered.');
+  approver.createWindow();
+})
 
 ipcMain.on('action_close', (event, arg) => {
   if (notifier.currentNotificationWindow !== null) {
