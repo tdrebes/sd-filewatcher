@@ -7,10 +7,13 @@ class Approver {
             'title': 'Approve files',
             'webPreferences': {
                 'nodeIntegration': true,
+                'contextIsolation': false,
             },
             'autoHideMenuBar': true,
-            'icon': __dirname + '/resources/notification.png'
+            'icon': __dirname + '/resources/notification.png',
         });
+
+        this.window.loadURL(__dirname + '/templates/approver.html');
     }
 }
 
