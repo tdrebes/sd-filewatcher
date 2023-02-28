@@ -1,19 +1,42 @@
-const { BrowserWindow } = require('electron'); 
+const { BrowserWindow, app } = require('electron'); 
+const path = require('path');
 
 class Approver {
-    window = null;
+    approverWindow = null;
     createWindow() {
-        this.window = new BrowserWindow({
-            'title': 'Approve files',
-            'webPreferences': {
-                'nodeIntegration': true,
-                'contextIsolation': false,
+        const approverWindow = new BrowserWindow({
+            title: 'Approve files',
+            webPreferences: {
+                preload: path.join(__dirname, 'preload-approver.js'),
+                nodeIntegration: true,
+                contextIsolation: false,
             },
-            'autoHideMenuBar': true,
-            'icon': __dirname + '/resources/notification.png',
+            autoHideMenuBar: true,
+            icon: __dirname + '/resources/notification.png',
+            show: false,
+            darkTheme: true,
+            // titleBarStyle: 'hidden',
+            titleBarOverlay: {
+                color: '#2f3241',
+                symbolColor: '#74b1be',
+                height: 30,
+            },
         });
 
-        this.window.loadURL(__dirname + '/templates/approver.html');
+        approverWindow.loadURL(__dirname + '/templates/approver.html');
+
+        approverWindow.on('ready-to-show', () => {
+            // destroy existing notification before showing a new one
+            if (this.approverWindow !== null) {
+                this.approverWindow.destroy();
+            }
+            this.approverWindow = approverWindow;
+
+            approverWindow.show();
+        });
+    
+
+        // this.approverWindow = approverWindow;
     }
 }
 
